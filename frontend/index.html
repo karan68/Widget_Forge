@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Forge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="AI-powered custom Windows 11 Widgets">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Widget Forge</h1>
+            <p>Type what you want. Get a live widget.</p>
+        </header>
+        <div id="input-section">
+            <input type="text" id="prompt-input"
+                   placeholder="Try: system health, 5 min timer, track TSLA stock, checklist..."
+                   autocomplete="off" />
+            <button id="sug-btn" onclick="toggleSuggestions()" title="Suggestions">✦</button>
+            <button id="forge-btn" onclick="forgeWidget()">Forge</button>
+        </div>
+        <div id="status"></div>
+        <div id="suggestions-overlay" class="sug-overlay" onclick="closeSuggestionsOverlay(event)">
+            <div class="sug-popup">
+                <div class="sug-popup-header">
+                    <span class="sug-popup-title">✦ Suggestions</span>
+                    <span id="sug-popup-count" class="sug-popup-count"></span>
+                    <button class="sug-popup-close" onclick="toggleSuggestions()">&times;</button>
+                </div>
+                <div id="sug-popup-body" class="sug-popup-body"></div>
+            </div>
+        </div>
+        <div id="widget-board"></div>
+    </div>
+    <!-- AdaptiveCards library -->
+    <script src="https://cdn.jsdelivr.net/npm/adaptivecards@3.0.4/dist/adaptivecards.min.js"></script>
+    <script>
+    if (typeof AdaptiveCards === 'undefined') {
+        document.write('<script src="https://unpkg.com/adaptivecards@3.0.4/dist/adaptivecards.min.js"><\/script>');
+    }
+    </script>
+    <script src="app.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
+    }
+    </script>
+</body>
+</html>

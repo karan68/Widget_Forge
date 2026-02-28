@@ -1,0 +1,9 @@
+{
+    "cpu_percent": "--",
+    "mem_percent": "--",
+    "disk_percent": "--",
+    "cpu_detail": "Loading...",
+    "mem_detail": "Loading...",
+    "disk_detail": "Loading...",
+    "battery_detail": "Loading..."
+}

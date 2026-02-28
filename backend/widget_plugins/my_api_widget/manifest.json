@@ -1,0 +1,38 @@
+{
+  "id": "my_api_widget",
+  "name": "My API Widget",
+  "version": "1.0.0",
+  "description": "Widget that needs an API key",
+  "category": "Dev",
+  "keywords": ["my api", "my api widget", "custom api"],
+  "runtime": {
+    "refresh_policy": "interval",
+    "min_refresh_interval": 5,
+    "concurrent_requests": false
+  },
+  "failure": {
+    "on_missing_credentials": "block",
+    "on_rate_limit": "degrade",
+    "on_timeout": "retry"
+  },
+  "ui": {
+    "default_size": "md",
+    "icon": "🔐"
+  },
+  "capabilities": [
+    {
+      "service_name": "My Custom API",
+      "type": "api_key",
+      "required": true,
+      "scope": "read_data",
+      "config_key": "MY_CUSTOM_API_KEY",
+      "setup_url": "https://example.com/get-key",
+      "setup_steps": [
+        "Go to example.com and sign up",
+        "Find your API key in settings",
+        "Paste it below"
+      ],
+      "placeholder": "e.g., sk-xxxxxxxxxxxx"
+    }
+  ]
+}

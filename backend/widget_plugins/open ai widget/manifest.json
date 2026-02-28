@@ -1,0 +1,27 @@
+{
+  "id": "openai_usage",
+  "name": "OpenAI Usage",
+  "version": "1.0.0",
+  "description": "Track your OpenAI API usage and costs",
+  "category": "Dev",
+  "keywords": ["openai", "gpt usage", "api usage", "openai costs"],
+  "runtime": { "refresh_policy": "interval", "min_refresh_interval": 10, "concurrent_requests": false },
+  "failure": { "on_missing_credentials": "block", "on_rate_limit": "degrade", "on_timeout": "retry" },
+  "ui": { "default_size": "md", "icon": "🤖" },
+  "capabilities": [
+    {
+      "service_name": "OpenAI API",
+      "type": "api_key",
+      "required": true,
+      "scope": "usage.read",
+      "config_key": "OPENAI_API_KEY",
+      "setup_url": "https://platform.openai.com/api-keys",
+      "setup_steps": [
+        "Go to platform.openai.com → API Keys",
+        "Create a new secret key",
+        "Paste it below"
+      ],
+      "placeholder": "sk-..."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "spotify",
+  "name": "Spotify Now Playing",
+  "version": "1.0.0",
+  "description": "Shows currently playing track on Spotify",
+  "category": "Media",
+  "keywords": ["spotify", "now playing", "music", "currently playing"],
+  "runtime": { "refresh_policy": "interval", "min_refresh_interval": 1, "concurrent_requests": false },
+  "failure": { "on_missing_credentials": "block", "on_rate_limit": "degrade", "on_timeout": "retry" },
+  "ui": { "default_size": "md", "icon": "🎵" },
+  "capabilities": [
+    {
+      "service_name": "Spotify API",
+      "type": "oauth",
+      "required": true,
+      "scope": "user-read-currently-playing",
+      "config_key": "SPOTIFY_CLIENT_ID",
+      "setup_url": "https://developer.spotify.com/dashboard",
+      "setup_steps": [
+        "Go to developer.spotify.com/dashboard",
+        "Create a new app",
+        "Copy Client ID and Client Secret"
+      ],
+      "fields": [
+        { "key": "SPOTIFY_CLIENT_ID", "label": "Client ID", "placeholder": "e.g., abc123..." },
+        { "key": "SPOTIFY_CLIENT_SECRET", "label": "Client Secret", "placeholder": "e.g., xyz789..." }
+      ]
+    }
+  ]
+}

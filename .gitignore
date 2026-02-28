@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test cache
+.pytest_cache/
+
+# Credentials & state (user-specific, not committed)
+backend/store/credentials.json
+backend/store/widget_states.json
+backend/store/widgets.json
+backend/store/google_token.json
+backend/store/clipboard_history.json
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Node (if any)
+node_modules/

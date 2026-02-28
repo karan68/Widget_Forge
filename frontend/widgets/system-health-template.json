@@ -1,0 +1,55 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.6",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "System Health",
+            "size": "Large",
+            "weight": "Bolder",
+            "wrap": true
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {"type": "TextBlock", "text": "${cpu_percent}%", "size": "ExtraLarge", "weight": "Bolder", "color": "Good", "horizontalAlignment": "Center"},
+                        {"type": "TextBlock", "text": "CPU", "size": "Small", "isSubtle": true, "horizontalAlignment": "Center", "wrap": true}
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {"type": "TextBlock", "text": "${mem_percent}%", "size": "ExtraLarge", "weight": "Bolder", "color": "Good", "horizontalAlignment": "Center"},
+                        {"type": "TextBlock", "text": "RAM", "size": "Small", "isSubtle": true, "horizontalAlignment": "Center", "wrap": true}
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {"type": "TextBlock", "text": "${disk_percent}%", "size": "ExtraLarge", "weight": "Bolder", "color": "Good", "horizontalAlignment": "Center"},
+                        {"type": "TextBlock", "text": "Disk", "size": "Small", "isSubtle": true, "horizontalAlignment": "Center", "wrap": true}
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+                {"title": "CPU", "value": "${cpu_detail}"},
+                {"title": "RAM", "value": "${mem_detail}"},
+                {"title": "Disk", "value": "${disk_detail}"},
+                {"title": "Battery", "value": "${battery_detail}"}
+            ]
+        }
+    ],
+    "actions": [
+        {"type": "Action.Execute", "title": "Refresh", "verb": "refresh"}
+    ]
+}
